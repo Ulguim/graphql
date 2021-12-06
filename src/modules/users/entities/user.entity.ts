@@ -1,8 +1,8 @@
-import { StaffEntity } from 'src/modules/staffs/entities/staff.entity';
+import { BaseEntity } from 'src/modules/base/entities/base.entity';
 import { Schedule } from 'src/modules/Schedules/entities/Schedule.entity';
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 @Entity()
-export class User extends StaffEntity {
+export class User extends BaseEntity {
 
   @Column()
   name: string;
