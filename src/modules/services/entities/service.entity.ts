@@ -1,6 +1,6 @@
 import { scheduled } from 'rxjs';
 import { Column, Entity, OneToMany, OneToOne, PrimaryGeneratedColumn, ManyToOne} from 'typeorm';
-import { Schedule } from 'src/modules/schedules/entities/schedule.entity';
+import { Schedule } from 'src/modules/schedules/entities/Schedule.entity';
 import { BaseEntity } from 'src/modules/bases/entities/base.entity';
 
 @Entity()
@@ -16,6 +16,6 @@ export class Service extends BaseEntity {
   schedule: Schedule;
 
 
-  
+
 }
 

@@ -2,29 +2,308 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+input CreateManyUsersInput {
+  """Array of records to create"""
+  users: [CreateUserInput!]!
+}
+
+input CreateOneUserInput {
+  """The record to create"""
+  user: CreateUserInput!
+}
+
 input CreateUserInput {
-  """Example field (placeholder)"""
-  exampleField: Int!
+  cpf: Float
+  created: DateTime!
+  name: String!
+}
+
+input DateFieldComparison {
+  between: DateFieldComparisonBetween
+  eq: DateTime
+  gt: DateTime
+  gte: DateTime
+  in: [DateTime!]
+  is: Boolean
+  isNot: Boolean
+  lt: DateTime
+  lte: DateTime
+  neq: DateTime
+  notBetween: DateFieldComparisonBetween
+  notIn: [DateTime!]
+}
+
+input DateFieldComparisonBetween {
+  lower: DateTime!
+  upper: DateTime!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type DeleteManyResponse {
+  """The number of records deleted."""
+  deletedCount: Int!
+}
+
+input DeleteManyUsersInput {
+  """Filter to find records to delete"""
+  filter: UserDeleteFilter!
+}
+
+input DeleteOneUserInput {
+  """The id of the record to delete."""
+  id: ID!
 }
 
 type Mutation {
-  createUser(createUserInput: CreateUserInput!): User!
-  removeUser(id: Int!): User!
-  updateUser(updateUserInput: UpdateUserInput!): User!
+  createManyUsers(input: CreateManyUsersInput!): [User!]!
+  createOneUser(input: CreateOneUserInput!): User!
+  deleteManyUsers(input: DeleteManyUsersInput!): DeleteManyResponse!
+  deleteOneUser(input: DeleteOneUserInput!): UserDeleteResponse!
+  updateManyUsers(input: UpdateManyUsersInput!): UpdateManyResponse!
+  updateOneUser(input: UpdateOneUserInput!): User!
+}
+
+input NumberFieldComparison {
+  between: NumberFieldComparisonBetween
+  eq: Float
+  gt: Float
+  gte: Float
+  in: [Float!]
+  is: Boolean
+  isNot: Boolean
+  lt: Float
+  lte: Float
+  neq: Float
+  notBetween: NumberFieldComparisonBetween
+  notIn: [Float!]
+}
+
+input NumberFieldComparisonBetween {
+  lower: Float!
+  upper: Float!
+}
+
+type OffsetPageInfo {
+  """true if paging forward and there are more records."""
+  hasNextPage: Boolean
+
+  """true if paging backwards and there are more records."""
+  hasPreviousPage: Boolean
+}
+
+input OffsetPaging {
+  """Limit the number of records returned"""
+  limit: Int
+
+  """Offset to start returning records from"""
+  offset: Int
 }
 
 type Query {
-  user(id: Int!): User!
-  users: [User!]!
+  user(
+    """The id of the record to find."""
+    id: ID!
+  ): User
+  users(
+    """Specify to filter the records returned."""
+    filter: UserFilter = {}
+
+    """Limit or page results."""
+    paging: OffsetPaging = {limit: 10}
+
+    """Specify to sort results."""
+    sorting: [UserSort!] = []
+  ): UserConnection!
+}
+
+"""Sort Directions"""
+enum SortDirection {
+  ASC
+  DESC
+}
+
+"""Sort Nulls Options"""
+enum SortNulls {
+  NULLS_FIRST
+  NULLS_LAST
+}
+
+input StringFieldComparison {
+  eq: String
+  gt: String
+  gte: String
+  iLike: String
+  in: [String!]
+  is: Boolean
+  isNot: Boolean
+  like: String
+  lt: String
+  lte: String
+  neq: String
+  notILike: String
+  notIn: [String!]
+  notLike: String
+}
+
+type UpdateManyResponse {
+  """The number of records updated."""
+  updatedCount: Int!
+}
+
+input UpdateManyUsersInput {
+  """Filter used to find fields to update"""
+  filter: UserUpdateFilter!
+
+  """The update to apply to all records found using the filter"""
+  update: UpdateUserInput!
+}
+
+input UpdateOneUserInput {
+  """The id of the record to update"""
+  id: ID!
+
+  """The update to apply."""
+  update: UpdateUserInput!
 }
 
 input UpdateUserInput {
-  """Example field (placeholder)"""
-  exampleField: Int
-  id: Int!
+  cpf: Float
+  created: DateTime
+  id: ID
+  name: String
 }
 
 type User {
-  """Example field (placeholder)"""
-  exampleField: Int!
+  cpf: Float
+  created: DateTime!
+  createdAt: DateTime!
+  deletedAt: DateTime!
+  id: String!
+  name: String!
+  updatedAt: DateTime!
+}
+
+type UserAggregateGroupBy {
+  cpf: Float
+  created: DateTime
+  createdAt: DateTime
+  deletedAt: DateTime
+  id: String
+  name: String
+  updatedAt: DateTime
+}
+
+type UserAvgAggregate {
+  cpf: Float
+}
+
+type UserConnection {
+  """Array of nodes."""
+  nodes: [User!]!
+
+  """Paging information"""
+  pageInfo: OffsetPageInfo!
+
+  """Fetch total count of records"""
+  totalCount: Int!
+}
+
+type UserCountAggregate {
+  cpf: Int
+  created: Int
+  createdAt: Int
+  deletedAt: Int
+  id: Int
+  name: Int
+  updatedAt: Int
+}
+
+input UserDeleteFilter {
+  and: [UserDeleteFilter!]
+  cpf: NumberFieldComparison
+  created: DateFieldComparison
+  createdAt: DateFieldComparison
+  deletedAt: DateFieldComparison
+  id: StringFieldComparison
+  name: StringFieldComparison
+  or: [UserDeleteFilter!]
+  updatedAt: DateFieldComparison
+}
+
+type UserDeleteResponse {
+  cpf: Float
+  created: DateTime
+  createdAt: DateTime
+  deletedAt: DateTime
+  id: String
+  name: String
+  updatedAt: DateTime
+}
+
+input UserFilter {
+  and: [UserFilter!]
+  cpf: NumberFieldComparison
+  created: DateFieldComparison
+  createdAt: DateFieldComparison
+  deletedAt: DateFieldComparison
+  id: StringFieldComparison
+  name: StringFieldComparison
+  or: [UserFilter!]
+  updatedAt: DateFieldComparison
+}
+
+type UserMaxAggregate {
+  cpf: Float
+  created: DateTime
+  createdAt: DateTime
+  deletedAt: DateTime
+  id: String
+  name: String
+  updatedAt: DateTime
+}
+
+type UserMinAggregate {
+  cpf: Float
+  created: DateTime
+  createdAt: DateTime
+  deletedAt: DateTime
+  id: String
+  name: String
+  updatedAt: DateTime
+}
+
+input UserSort {
+  direction: SortDirection!
+  field: UserSortFields!
+  nulls: SortNulls
+}
+
+enum UserSortFields {
+  cpf
+  created
+  createdAt
+  deletedAt
+  id
+  name
+  updatedAt
+}
+
+type UserSumAggregate {
+  cpf: Float
+}
+
+input UserUpdateFilter {
+  and: [UserUpdateFilter!]
+  cpf: NumberFieldComparison
+  created: DateFieldComparison
+  createdAt: DateFieldComparison
+  deletedAt: DateFieldComparison
+  id: StringFieldComparison
+  name: StringFieldComparison
+  or: [UserUpdateFilter!]
+  updatedAt: DateFieldComparison
 }

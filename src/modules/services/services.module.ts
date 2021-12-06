@@ -10,11 +10,12 @@ import {
   NestjsQueryGraphQLModule,
   PagingStrategies,
 } from '@nestjs-query/query-graphql';
+import { Schedule } from '../Schedules/entities/Schedule.entity';
 @Module({ 
 
   imports: [
     NestjsQueryGraphQLModule.forFeature({
-      imports: [NestjsQueryTypeOrmModule.forFeature([Service])],
+      imports: [NestjsQueryTypeOrmModule.forFeature([Service,Schedule])],
       resolvers: [
         {
           DTOClass: ServiceDTO,

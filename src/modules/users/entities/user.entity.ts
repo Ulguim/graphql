@@ -1,4 +1,4 @@
-import { BaseEntity } from 'src/modules/base/entities/base.entity';
+import { BaseEntity } from 'src/modules/bases/entities/base.entity';
 import { Schedule } from 'src/modules/Schedules/entities/Schedule.entity';
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 @Entity()

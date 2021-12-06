@@ -4,6 +4,9 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { join } from 'path';
 
 import { AppService } from './app.service';
+import { Schedule } from './modules/Schedules/entities/Schedule.entity';
+import { Service } from './modules/services/entities/service.entity';
+import { User } from './modules/users/entities/user.entity';
 import { UsersModule } from './modules/users/users.module';
 
 @Module({
@@ -13,7 +16,9 @@ import { UsersModule } from './modules/users/users.module';
       sortSchema: true,
 
     }),
-    TypeOrmModule.forRoot(),
+    TypeOrmModule.forRoot({
+      autoLoadEntities: true
+    }),
     UsersModule
   ],
   controllers: [],
