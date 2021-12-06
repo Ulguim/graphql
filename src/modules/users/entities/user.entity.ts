@@ -1,7 +1,22 @@
-import { ObjectType, Field, Int } from '@nestjs/graphql';
+import { StaffEntity } from 'src/modules/staffs/entities/staff.entity';
+import { Schedule } from 'src/modules/Schedules/entities/Schedule.entity';
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+@Entity()
+export class User extends StaffEntity {
 
-@ObjectType()
-export class User {
-  @Field(() => Int, { description: 'Example field (placeholder)' })
-  exampleField: number;
+  @Column()
+  name: string;
+
+  @Column()
+  created: Date;
+
+  @Column({nullable: true})
+  cpf: number;
+  schedules: any;
+
+  //@OneToMany(() => Schedule, (schedule) => schedule.user)
+  //schedule: Schedule[];
+
+
+
 }
