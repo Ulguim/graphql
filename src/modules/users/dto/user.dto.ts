@@ -9,7 +9,7 @@ import { ScheduleDTO } from 'src/modules/schedules/dto/schedule.dto';
 
 @ObjectType('User')
 //@FilterableOffsetConnection('Schedule',() => ScheduleDTO,{ nullable: true })
-export class UserDTO extends StaffDTO { 
+export class UserDTO extends BaseDTO { 
 
   @FilterableField()
   name: string;
