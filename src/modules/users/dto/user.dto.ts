@@ -1,7 +1,7 @@
 import { FilterableField, FilterableOffsetConnection, FilterableRelation } from '@nestjs-query/query-graphql';
 import { Field, ObjectType } from '@nestjs/graphql';
 //import { ScheduleDTO } from 'src/modules/schedules/dto/schedule.dto';
-import { StaffDTO } from 'src/modules/staffs/dto/staff.dto';
+import { BaseDTO } from 'src/modules/staffs/dto/base.dto';
 import { ScheduleDTO } from 'src/modules/schedules/dto/schedule.dto';
 //import { staffsDTO } from 'src/modules/staffs/dto/staffs.dto';
 
